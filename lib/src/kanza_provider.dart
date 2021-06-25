@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'kanza.dart';
-
-typedef KanzaInstanceBuilder<K> = K Function(BuildContext context);
+import 'typedefs.dart';
 
 dynamic _kanza;
 
@@ -33,7 +32,7 @@ class KanzaProvider<K extends Kanza> extends StatefulWidget {
 class _KanzaProviderState<K extends Kanza> extends State<KanzaProvider<K>> {
   @override
   Widget build(BuildContext context) {
-    return widget.child ?? SizedBox();
+    return widget.child ?? SizedBox.shrink();
   }
 
   @override

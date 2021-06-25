@@ -4,13 +4,13 @@ import 'kanza.dart';
 import 'kanza_provider.dart';
 import 'typedefs.dart';
 
-class KanzaBuilder<K extends Kanza, S> extends StatelessWidget {
-  const KanzaBuilder({
+class KanzaListener<K extends Kanza, S> extends StatelessWidget {
+  const KanzaListener({
     Key? key,
-    required this.builder,
+    required this.listener,
   }) : super(key: key);
 
-  final KanzaWidgetBuilder<S> builder;
+  final KanzaListenerBuilder<S> listener;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,8 @@ class KanzaBuilder<K extends Kanza, S> extends StatelessWidget {
       stream: kanza.stream as Stream<S>,
       initialData: kanza.initialState,
       builder: (context, snapshot) {
-        return builder(context, snapshot.data as S);
+        listener(context, snapshot.data as S);
+        return SizedBox.shrink();
       },
     );
   }

@@ -1,3 +1,6 @@
-## 0.0.1
+## [0.3.0] - 06.25.2021
 
-* TODO: Describe initial release.
+* `Kanza` initialized
+* `KanzaProvider` initialized
+* `KanzaBuilder` initialized
+* `KanzaListener` initialized

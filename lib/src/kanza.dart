@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 abstract class Kanza<S> {
   Kanza(this.initialState) {
     stateController = StreamController<S>.broadcast();
-    stateController.add(initialState);
     _state ??= initialState;
+    stateController.add(_state!);
   }
 
   late final StreamController<S> stateController;
@@ -20,9 +20,10 @@ abstract class Kanza<S> {
   }
 
   void notify(S state) {
-    _state = state;
-    print('notify: $_state');
-    stateController.add(state);
+    if (state != _state) {
+      _state = state;
+      stateController.add(state);
+    }
   }
 
   @mustCallSuper
